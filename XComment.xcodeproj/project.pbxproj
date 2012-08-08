@@ -166,6 +166,8 @@
 		9432CB9815D246D200DC9F95 /* XCommentKit-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "XCommentKit-Prefix.pch"; sourceTree = "<group>"; };
 		9432CB9915D246D200DC9F95 /* XCommentKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XCommentKit.h; sourceTree = "<group>"; };
 		9432CBC415D2486C00DC9F95 /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
+		94350D7E15D2F88700D7057B /* install.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = install.sh; sourceTree = "<group>"; };
+		94350D7F15D2F88700D7057B /* uninstall.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = uninstall.sh; sourceTree = "<group>"; };
 		9447B7B715CFF48F008011BE /* DVTFoundation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DVTFoundation.h; sourceTree = "<group>"; };
 		9447B7B815CFF48F008011BE /* DVTKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DVTKit.h; sourceTree = "<group>"; };
 		9447B7B915CFF48F008011BE /* IDEFoundation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDEFoundation.h; sourceTree = "<group>"; };
@@ -247,6 +249,7 @@
 		9432CB6715D246D200DC9F95 /* XCommentKit */ = {
 			isa = PBXGroup;
 			children = (
+				94350D7D15D2F88700D7057B /* Scripts */,
 				9432CB6815D246D200DC9F95 /* Categories */,
 				9432CB7B15D246D200DC9F95 /* Code */,
 				9432CB8115D246D200DC9F95 /* InfoPlist.strings */,
@@ -350,6 +353,15 @@
 			);
 			path = XcodeHeaders;
 			sourceTree = "<group>";
+		};
+		94350D7D15D2F88700D7057B /* Scripts */ = {
+			isa = PBXGroup;
+			children = (
+				94350D7E15D2F88700D7057B /* install.sh */,
+				94350D7F15D2F88700D7057B /* uninstall.sh */,
+			);
+			path = Scripts;
+			sourceTree = SOURCE_ROOT;
 		};
 		9447B7B515CFF48F008011BE /* Linked Frameworks */ = {
 			isa = PBXGroup;
