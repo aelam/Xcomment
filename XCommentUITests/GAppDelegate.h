@@ -7,7 +7,7 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import <XcodeKit/XcodeKit.h>
+#import <XCommentKit/XCommentKit.h>
 
 @class DVTSourceTextViewHook;
 
@@ -15,5 +15,6 @@
 
 @property (assign) IBOutlet NSWindow *window;
 @property (unsafe_unretained) IBOutlet DVTSourceTextViewHook *textView;
+
 
 @end

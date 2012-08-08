@@ -1,32 +1,54 @@
 //
-//  XcodeKitTests.m
-//  XcodeKitTests
+//  XCommentKitTests.m
+//  XCommentKitTests
 //
 //  Created by Ryan Wang on 12-8-6.
 //  Copyright (c) 2012年 Ryan Wang. All rights reserved.
 //
 
-#import "XcodeKitTests.h"
+#import "XCommentKitTests.h"
+#import <UIKit/UIKit.h>
 
-@implementation XcodeKitTests
+@implementation XCommentKitTests
 
 - (void)setUp
 {
     [super setUp];
-    
-    // Set-up code here.
+    /**
+     *  s'd'f's'd'f
+     *  
+     *   
+     *   fsdfsdf
+     *   fsdfdsf
+     *   fsdfsdfsdfdsfds
+     *   YES
+     *   
+     **
+     **
+     **
+     **
+     *
+     **
+     ****
+     *
+     ** 
+     **
+     **
+     *
+     *   
+     */
 }
 
 - (void)tearDown
 {
-    // Tear-down code here.
+
     
     [super tearDown];
 }
 
 - (void)testExample
 {
-    STFail(@"Unit tests are not implemented yet in XcodeKitTests");
+    STFail(@"Unit tests are not implemented yet in XCommentKitTests");
 }
 
 @end

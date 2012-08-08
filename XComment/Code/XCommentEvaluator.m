@@ -9,10 +9,14 @@
 #import "XCommentEvaluator.h"
 #import "NSEvent+Keymap.h"
 #import <XcodeKit/XcodeKit.h>
+#import "RegexKitLite.h"
 
 static int const kVirtualEnterKey = 36;
 static int const kSpaceKey        = 32;
 static int const kSlashKey        = 47;
+
+
+static NSString *const kDoubleSlashPrefixParttern = @"^\\s+/{2}";
 
 @implementation XCommentEvaluator
 
@@ -33,40 +37,73 @@ static int const kSlashKey        = 47;
         return NO;
     }
     
+    NSRange selectedRange = [[[textView selectedRanges] objectAtIndex:0] rangeValue];
+    
     NSRange currentLineRange = [textView currentLineRange];
-    NSString *currentLineString = [textView.string substringWithRange:currentLineRange];
-  
-    if (currentLineString.length > 0) {
-        
-        NSScanner *scanner = [NSScanner scannerWithString:currentLineString];
-        NSCharacterSet *commentCharSet = [NSCharacterSet characterSetWithCharactersInString:@"/*"];
-//        [scanner scanCharactersFromSet:commentCharSet intoString:<#(NSString *__autoreleasing *)#>]
-        [scanner setCharactersToBeSkipped:[NSCharacterSet whitespaceCharacterSet]];
-    }
+    // 当前行首到 InsertPoint 的range
+    NSRange searchRange = {currentLineRange.location, selectedRange.location - currentLineRange.location};
+    
+    NSString *searchString = [textView.string substringWithRange:searchRange];
+    
+    NSLog(@"%@",searchString);
+    BOOL matchedDoubleSlash = [searchString isMatchedByRegex:kDoubleSlashPrefixParttern];
+    NSLog(@"DoubleSlash : %d",matchedDoubleSlash);
     
     
-    NSLog(@"%@",currentLineString);
+    
+//    NSMutableString *prefixSpaces = [NSMutableString string];
+//    NSUInteger length = currentLineString.length;
+//    
+//    BOOL found = NO;
+//    for (int i = 0; i < length; i ++) {
+//        unichar c = [currentLineString characterAtIndex:i];
+//        if(c == kSpaceKey) {
+//            [prefixSpaces appendString:@" "];
+//        } else if (c == kSlashKey){
+//            if (i == length - 1) {
+//                break;
+//            } else {
+//                unichar next = [currentLineString characterAtIndex:i+1];
+//                if(next == kSlashKey) {
+//                    found = YES;
+//                    break;
+//                }
+//            }
+//        } else {
+//            break;
+//        }
+//        
+//    }
+    
+//        NSLog(@"prefixSpaces [%@]", prefixSpaces);
+//    NSLog(@"found // ? %d ",found);
     
     
-    // Trim SPACE|TAB in the Begin
-    NSString *trimPrefix = [currentLineString stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-
-    if (trimPrefix.length > 0) {
-        BOOL isCommentLine = [trimPrefix hasPrefix:@"//"];
-        if (isCommentLine) {
-            NSString *oldPrefix = [currentLineString substringToIndex:currentLineString.length - trimPrefix.length];
-            NSLog(@"origin : [%@]",currentLineString);
-            NSLog(@"trimPrefix : [%@]",trimPrefix);
-            NSLog(@"the prefix : [%@]",oldPrefix);
-            
-            NSString *insertText = [NSString stringWithFormat:@"\n%@//",oldPrefix?oldPrefix:@""];
-            NSLog(@"insertText : [%@]",insertText);
-            [textView insertText:insertText];
-            return YES;
-        }
-        
-    }
+    return YES;
     
+    
+//    NSLog(@"%@",currentLineString);
+//    
+//    
+//    // Trim SPACE|TAB in the Begin
+//    NSString *trimPrefix = [currentLineString stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+//
+//    if (trimPrefix.length > 0) {
+//        BOOL isCommentLine = [trimPrefix hasPrefix:@"//"];
+//        if (isCommentLine) {
+//            NSString *oldPrefix = [currentLineString substringToIndex:currentLineString.length - trimPrefix.length];
+//            NSLog(@"origin : [%@]",currentLineString);
+//            NSLog(@"trimPrefix : [%@]",trimPrefix);
+//            NSLog(@"the prefix : [%@]",oldPrefix);
+//            
+//            NSString *insertText = [NSString stringWithFormat:@"\n%@//",oldPrefix?oldPrefix:@""];
+//            NSLog(@"insertText : [%@]",insertText);
+//            [textView insertText:insertText];
+//            return YES;
+//        }
+//        
+//    }
+//    
     return NO;
 }
 
