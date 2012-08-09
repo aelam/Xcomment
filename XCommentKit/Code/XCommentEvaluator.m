@@ -63,6 +63,14 @@ static NSString *const kDoubleSlashPrefixParttern = @"^\\/{2}( {0,})|^\\/\\*( {0
 
     NSString *matchedDoubleSlash = [trimedSpacesString stringByMatching:kDoubleSlashPrefixParttern];
 
+    if(matchedDoubleSlash.length < 1) {
+        return NO;
+    }
+//
+//    NSLog(@"trimedSpacesString %@",trimedSpacesString);
+//
+//    NSLog(@"matchedDoubleSlash %@",matchedDoubleSlash);
+    
     NSString *newString = matchedDoubleSlash;
 
     if ([matchedDoubleSlash rangeOfString:@"//"].length) {
