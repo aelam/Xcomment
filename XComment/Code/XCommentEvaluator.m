@@ -48,12 +48,12 @@ static NSString *const kDoubleSlashPrefixParttern = @"^\\s+/{2}";
     NSLog(@"%@",searchString);
     BOOL matchedDoubleSlash = [searchString isMatchedByRegex:kDoubleSlashPrefixParttern];
     NSLog(@"DoubleSlash : %d",matchedDoubleSlash);
+    //    NSUInteger length = currentLineString.length;
     
     
     
 //    NSMutableString *prefixSpaces = [NSMutableString string];
-//    NSUInteger length = currentLineString.length;
-//    
+//
 //    BOOL found = NO;
 //    for (int i = 0; i < length; i ++) {
 //        unichar c = [currentLineString characterAtIndex:i];

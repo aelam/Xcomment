@@ -15,11 +15,13 @@
     //
     //
     //
-    
+
+#ifdef DEBUG
+    // Log to file
     NSString *logPath = @"/Users/ryan/Desktop/VIXcode.log";
     [[NSFileManager defaultManager] removeItemAtPath:logPath error:nil];
     freopen([logPath cStringUsingEncoding:NSASCIIStringEncoding], "a+", stderr);
-
+#endif
     NSString *privateFrameworksPath = [plugin privateFrameworksPath];
     NSString *commentFrameworkPath = [privateFrameworksPath stringByAppendingPathComponent:@"XCommentKit.framework"];
     NSBundle *realPluginBundle = [NSBundle bundleWithPath:commentFrameworkPath];
